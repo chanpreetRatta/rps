@@ -27,3 +27,14 @@ function playRound() {
   else if (humanChoice === computerChoice) return drawStatement;
   else return lostStatement;
 }
+
+function playGame(numberOfRounds) {
+  let trigger = 0;
+  while (trigger < numberOfRounds) {
+    console.log(playRound());
+    trigger++;
+  }
+}
+
+let numberOfRounds = prompt("enter the number of rounds");
+playGame(numberOfRounds);
