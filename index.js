@@ -37,4 +37,4 @@ function playGame(numberOfRounds) {
 }
 
 let numberOfRounds = prompt("enter the number of rounds");
-playGame(numberOfRounds);
+
