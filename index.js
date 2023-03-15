@@ -35,6 +35,3 @@ function playGame(numberOfRounds) {
     trigger++;
   }
 }
-
-let numberOfRounds = prompt("enter the number of rounds");
-
