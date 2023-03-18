@@ -5,33 +5,34 @@ function getComputerChoice() {
   else if (choice === 2) return "scissor";
 }
 
-function getHumanChoice() {
-  let choice = prompt(
-    "Enter you choice, Rock, Paper or Scissors."
-  ).toLowerCase();
-  return choice;
+// This whole section will get human choice//
+//Start//
+
+const main = document.querySelectorAll(".main > div");
+let RESULT = document.querySelector(".result");
+
+function printResult(result, display) {
+  display.textContent = result;
 }
 
+main.forEach((element) => element.addEventListener("click", playRound));
+
+//End user input//
 function playRound() {
   const computerChoice = getComputerChoice();
-  const humanChoice = getHumanChoice();
+  const humanChoice = this.className;
+
   const winStatement = `You win! ${humanChoice} beats ${computerChoice}`;
-  const drawStatement = `It's Draw! ${humanChoice} is same as ${computerChoice}`;
+  const drawStatement = `It's a Draw! ${humanChoice} is same as ${computerChoice}`;
   const lostStatement = `You Loss! ${computerChoice} beats ${humanChoice}`;
 
-  if (humanChoice === "paper" && computerChoice === "rock") return winStatement;
-  else if (humanChoice === "rock" && computerChoice === "scissor")
-    return winStatement;
-  else if (humanChoice === "scissor" && computerChoice === "paper")
-    return winStatement;
-  else if (humanChoice === computerChoice) return drawStatement;
-  else return lostStatement;
-}
-
-function playGame(numberOfRounds) {
-  let trigger = 0;
-  while (trigger < numberOfRounds) {
-    console.log(playRound());
-    trigger++;
-  }
+  if (humanChoice === "paper" && computerChoice === "rock") {
+    printResult(winStatement, RESULT);
+  } else if (humanChoice === "rock" && computerChoice === "scissor") {
+    printResult(winStatement, RESULT);
+  } else if (humanChoice === "scissor" && computerChoice === "paper") {
+    printResult(winStatement, RESULT);
+  } else if (humanChoice === computerChoice) {
+    printResult(drawStatement, RESULT);
+  } else printResult(lostStatement, RESULT);
 }
