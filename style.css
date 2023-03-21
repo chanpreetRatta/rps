@@ -41,6 +41,41 @@ main > *:hover{
    transition: transform 300ms linear;
 }
 
+.results{
+    font-size: .8em;
+    width: 90%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.results > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.results > * > .scores {
+    font-size: 1.8em;
+}
+
+.computerScores{
+    height: 90px;
+    flex: 1;
+}
+
+.description{
+    height: 90px;
+    flex: 2; 
+}
+
+.humanScores{
+    height: 90px;
+    flex: 1;    
+}
+
 img {
     width: 90px;
     height: 90px;
