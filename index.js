@@ -11,17 +11,45 @@ function getComputerChoice() {
 const main = document.querySelectorAll(".main > div");
 let RESULT = document.querySelector(".results");
 let scoreBoard = document.querySelectorAll(".results > div ");
-console.log(scoreBoard);
+let COUNTER = 0;
+let FINAL_SCORE = 0;
 
-function printResult(result, display, winner) {
-  let counter = 0;
-  let finalScore = 0;
+function printResult(result, toDisplay, winner) {
+  let display = toDisplay.childNodes;
+  let scores = document.querySelectorAll(".results > div > .scores");
 
-  if (winner === 1)
-    display.childNodes.forEach((element) => {
-      if (element.className === "description")
-        console.log((element.textContent = result));
-    });
+  display.forEach((child) => {
+    if (child.className === "description") {
+      child.textContent = result;
+    }
+  });
+
+  if (winner === 1) {
+    let parseScore = parseInt(scores[0].textContent);
+    parseScore++;
+    scores[0].textContent = parseScore;
+  } else if (winner === -1) {
+    let parseScore = parseInt(scores[1].textContent);
+    parseScore++;
+    scores[1].textContent = parseScore;
+  }
+
+  FINAL_SCORE += winner;
+  COUNTER++;
+  console.log(FINAL_SCORE);
+
+  if (COUNTER === 4) {
+    if (FINAL_SCORE < 0) {
+      alert("You Lost");
+      location.reload();
+    } else if (FINAL_SCORE > 0) {
+      alert("You win");
+      location.reload();
+    } else {
+      alert("It's a Draw");
+      location.reload();
+    }
+  }
 }
 
 main.forEach((element) => element.addEventListener("click", playRound));
